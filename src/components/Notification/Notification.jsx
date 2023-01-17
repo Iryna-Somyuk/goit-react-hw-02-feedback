@@ -1,7 +1,9 @@
 import PropTypes from 'prop-types';
+import { VscFeedback } from "react-icons/vsc";
+import { Message } from './Notification.styled';
 
 export const Notification = ({ message }) => {
-  return <div>{message}</div>;
+  return <Message>{message} <VscFeedback/></Message>;
 };
 
 Notification.propTypes = {

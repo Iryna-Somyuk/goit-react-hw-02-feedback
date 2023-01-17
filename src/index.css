@@ -34,10 +34,10 @@ li {
 }
 
 button {
-  display: inline-flex;
-  /* font: inherit;
+display: inline-flex;
+  font: inherit;
   border: none;
-  padding: 0; */
+  padding: 0;
   cursor: pointer;
 }
 
@@ -46,4 +46,7 @@ img {
   max-width: 100%;
   height: auto;
   object-fit: cover;
+
 }
+
+

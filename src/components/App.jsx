@@ -7,7 +7,7 @@ import { Notification } from './Notification/Notification';
 export class App extends Component {
   static defaultProps = {
     total: 0,
-    positivePercentage: '',
+    positivePercentage: 0,
   };
 
   state = {
@@ -26,14 +26,12 @@ export class App extends Component {
 
   counterTotalFeedback = () => {
     const { good, neutral, bad } = this.state;
-
     return good + neutral + bad;
   };
 
   counterPositiveFeedbackPercentage = () => {
     const { good } = this.state;
     const totalFeedback = this.counterTotalFeedback();
-
     return (good * 100) / totalFeedback;
   };
 
@@ -47,15 +45,16 @@ export class App extends Component {
           />
         </Section>
         <Section title="Statistics">
-       {this.counterTotalFeedback() ? (
-          <Statistics
-            good={this.state.good}
-            neutral={this.state.neutral}
-            bad={this.state.bad}
-            total={this.counterTotalFeedback()}
-            positivePercentage={this.counterPositiveFeedbackPercentage()}
-          />
-       ) : (<Notification message="There is no feedback"></Notification>)} </Section>
+          {this.counterTotalFeedback() ? (
+            <Statistics
+              good={this.state.good}
+              neutral={this.state.neutral}
+              bad={this.state.bad}
+              total={this.counterTotalFeedback()}
+              positivePercentage={this.counterPositiveFeedbackPercentage()}
+            />
+          ) : (<Notification message="There is no feedback"></Notification>)}
+        </Section>
       </>
     );
   }
