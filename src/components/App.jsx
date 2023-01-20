@@ -3,6 +3,7 @@ import { Section } from './Section/Section';
 import { FeedbackOptions } from './FeedbackOptions/FeedbackOptions';
 import { Statistics } from './Statistics/Statistics';
 import { Notification } from './Notification/Notification';
+import { ConteinerFeedback, FeedbackBtn } from './App.styled';
 
 export class App extends Component {
   static defaultProps = {
@@ -37,12 +38,14 @@ export class App extends Component {
 
   render() {
     return (
-      <>
+      <ConteinerFeedback>
         <Section title="Please leave feedback">
+        <FeedbackBtn>
           <FeedbackOptions
             options={Object.keys(this.state)}
             onLeaveFeedback={this.counterFeedback}
           />
+            </FeedbackBtn>
         </Section>
         <Section title="Statistics">
           {this.counterTotalFeedback() ? (
@@ -53,9 +56,11 @@ export class App extends Component {
               total={this.counterTotalFeedback()}
               positivePercentage={this.counterPositiveFeedbackPercentage()}
             />
-          ) : (<Notification message="There is no feedback"></Notification>)}
+          ) : (
+            <Notification message="There is no feedback"></Notification>
+          )}
         </Section>
-      </>
+      </ConteinerFeedback>
     );
   }
 }
